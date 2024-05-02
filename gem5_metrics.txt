@@ -1,5 +1,5 @@
 ===================================INPUT ============================================
-Generated a signature of 5 64-bit addresses
+Generated a signature of 10 64-bit addresses
 Tested 10 64-bit addresses getting correct results 
 
 ===================================OUTPUT============================================
@@ -10,9 +10,9 @@ gem5 is copyrighted software; use the --copyright option for details.
 
 gem5 version 23.1.0.0
 gem5 compiled Apr 30 2024 20:20:35
-gem5 started May  2 2024 20:53:29
-gem5 executing on fedora, pid 78332
-command line: build/X86/gem5.opt configs/tutorial/part1/simple.py
+gem5 started May  2 2024 21:18:16
+gem5 executing on fedora, pid 86686
+command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
 
 Beginning simulation!
 1
@@ -20,4 +20,10 @@ Beginning simulation!
 1
 1
 1
-Exiting @ tick 6773058664000 because exiting with last active thread context
+0
+0
+0
+1
+1
+Exiting @ tick 5593110166000 because exiting with last active thread context
+=====================================================================================

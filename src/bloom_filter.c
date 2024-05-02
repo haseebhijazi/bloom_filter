@@ -7,6 +7,7 @@
 #define NUM_OF_SEGMENTS 8 // do not change bcz types
 #define SIGNATURE_SIZE 64 // do not change bcz types
 #define NUM_OF_ADDRS 1000
+#define TEST_SIZE 10
 
 #define ROTL64(x, r) ((x << r) | (x >> (64 - r)))
 
@@ -86,7 +87,7 @@ void init_signature(BloomFilterSignature *signature) {
 }
 
 void test(uint64_t test_addresses[], BloomFilterSignature *signature) {
-    for(int i=0; i<5; i++) {
+    for(int i=0; i<TEST_SIZE; i++) {
         printf("%d\n", search_signature(test_addresses[i], signature));
     }
 }
@@ -106,7 +107,7 @@ int main(int argc, char *argv[]) {
 
     generate_signature(addresses, log_sz, &signature);
 
-    uint64_t test_addresses[10] = {
+    uint64_t test_addresses[TEST_SIZE] = {
         0x1111111111111111, 0x1234123412341234, 0x4321432143214321, 0x1010101010101010, 0x0000000000000000,
         0x1335533189900998, 0x1267126790878790, 0x4578236389239056, 0x3758593625293746, 0x3476125395424263
     };
