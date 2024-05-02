@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
     init_signature(&signature);
 
     int log_sz = 0;
-    printf("Number of addresses in the logfile: ");
+    // printf("Number of addresses in the logfile: ");
     scanf("%d", &log_sz);
 
     uint64_t addresses[NUM_OF_ADDRS];
@@ -106,8 +106,9 @@ int main(int argc, char *argv[]) {
 
     generate_signature(addresses, log_sz, &signature);
 
-    uint64_t test_addresses[5] = {
-        0x1111111111111111, 0x1234123412341234, 0x4321432143214321, 0x1010101010101010, 0x0000000000000000
+    uint64_t test_addresses[10] = {
+        0x1111111111111111, 0x1234123412341234, 0x4321432143214321, 0x1010101010101010, 0x0000000000000000,
+        0x1335533189900998, 0x1267126790878790, 0x4578236389239056, 0x3758593625293746, 0x3476125395424263
     };
 
     test(test_addresses, &signature);
