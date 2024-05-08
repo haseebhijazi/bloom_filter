@@ -1,20 +1,16 @@
-===================================INPUT ============================================
-Generated a signature of 10 64-bit addresses
-Tested 10 64-bit addresses getting correct results 
-
-===================================OUTPUT============================================
-
-Global frequency set at 1000000000000 ticks per second
+========================================= 2 SEGMENTS=========================================
 gem5 Simulator System.  https://www.gem5.org
 gem5 is copyrighted software; use the --copyright option for details.
 
 gem5 version 23.1.0.0
 gem5 compiled Apr 30 2024 20:20:35
-gem5 started May  2 2024 21:18:16
-gem5 executing on fedora, pid 86686
+gem5 started May  8 2024 11:25:28
+gem5 executing on fedora, pid 30523
 command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
 
+Enter number of segments: Global frequency set at 1000000000000 ticks per second
 Beginning simulation!
+Number of Segments: 2 
 1
 1
 1
@@ -23,7 +19,106 @@ Beginning simulation!
 0
 0
 0
+0
+0
+Exiting @ tick 465470703000 because exiting with last active thread context
+
+========================================= 4 SEGMENTS=========================================
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 23.1.0.0
+gem5 compiled Apr 30 2024 20:20:35
+gem5 started May  8 2024 11:25:38
+gem5 executing on fedora, pid 30575
+command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
+
+Enter number of segments: Global frequency set at 1000000000000 ticks per second
+Beginning simulation!
+Number of Segments: 4 
 1
 1
-Exiting @ tick 5593110166000 because exiting with last active thread context
-=====================================================================================
+1
+1
+1
+0
+0
+0
+0
+0
+Exiting @ tick 411529463000 because exiting with last active thread context
+
+========================================= 8 SEGMENTS=========================================
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 23.1.0.0
+gem5 compiled Apr 30 2024 20:20:35
+gem5 started May  8 2024 11:26:27
+gem5 executing on fedora, pid 30856
+command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
+
+Enter number of segments: Global frequency set at 1000000000000 ticks per second
+Beginning simulation!
+Number of Segments: 8 
+1
+1
+1
+1
+1
+0
+0
+0
+0
+1
+Exiting @ tick 337732260000 because exiting with last active thread context
+
+=========================================16 SEGMENTS=========================================
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 23.1.0.0
+gem5 compiled Apr 30 2024 20:20:35
+gem5 started May  8 2024 11:27:32
+gem5 executing on fedora, pid 31359
+command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
+
+Enter number of segments: Global frequency set at 1000000000000 ticks per second
+Beginning simulation!
+Number of Segments: 16 
+1
+1
+1
+1
+1
+1
+0
+0
+1
+0
+Exiting @ tick 349995128000 because exiting with last active thread context
+
+=========================================32 SEGMENTS=========================================
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 23.1.0.0
+gem5 compiled Apr 30 2024 20:20:35
+gem5 started May  8 2024 11:28:35
+gem5 executing on fedora, pid 31815
+command line: build/X86/gem5.opt ./configs/project/bloom_simple.py
+
+Enter number of segments: Global frequency set at 1000000000000 ticks per second
+Beginning simulation!
+Number of Segments: 32 
+1
+1
+1
+1
+1
+1
+1
+1
+1
+1
+Exiting @ tick 450206797000 because exiting with last active thread context

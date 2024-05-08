@@ -4,7 +4,7 @@
 #include <inttypes.h>
 #include <pthread.h>
 
-#define NUM_OF_SEGMENTS 8 // do not change bcz types
+#define NUM_OF_SEGMENTS 2
 #define SIGNATURE_SIZE 64 // do not change bcz types
 #define NUM_OF_ADDRS 1000
 #define TEST_SIZE 10
@@ -13,8 +13,10 @@
 
 // #define NUM_OF_THREADS 4
 
+int num_of_segments;
+
 typedef struct {
-    uint8_t segments[NUM_OF_SEGMENTS]; // u8 bcz 64/8 = 8
+    uint64_t *segments;
 } BloomFilterSignature;
 
 void read_logfile(uint64_t addresses[], int sz) {
@@ -52,36 +54,37 @@ uint64_t murmur_hash_64(uint64_t key, uint64_t seed) {
     return h;
 }
 
-void set_index(uint8_t *byte, int i) {
-    *byte |= (1 << (i));
+void set_index(uint64_t *segment, int i) {
+    *segment |= (1 << (i));
 }
 
-int get_index(uint8_t byte, int i) {
-    return (byte & (1 << i)) != 0;
+int get_index(uint64_t segment, int i) {
+    return (segment & (1 << i)) != 0;
 }
 
 void generate_signature(uint64_t addresses[], int sz, BloomFilterSignature *signature) {
     for(int i=0; i<sz; i++) {
-        for(int j=0; j<NUM_OF_SEGMENTS; j++) {
+        for(int j=0; j<num_of_segments; j++) {
             uint64_t hash_val = murmur_hash_64(addresses[i], j);
             // printf("%" PRIu64 "\n", hash_val);
-            int index = hash_val % (SIGNATURE_SIZE / NUM_OF_SEGMENTS);
+            int index = hash_val % (SIGNATURE_SIZE / num_of_segments);
             set_index(&(signature->segments[j]), index);
         }
     }
 }
 
 int search_signature(uint64_t address, BloomFilterSignature *signature) {
-    for(int j=0; j<NUM_OF_SEGMENTS; j++) {
+    for(int j=0; j<num_of_segments; j++) {
         uint64_t hash_val = murmur_hash_64(address, j);
-        int index = hash_val % (SIGNATURE_SIZE / NUM_OF_SEGMENTS);
+        int index = hash_val % (SIGNATURE_SIZE / num_of_segments);
         if(get_index(signature->segments[j], index) == 0) return 0;
     }
     return 1;
 }
 
 void init_signature(BloomFilterSignature *signature) {
-    for (int i = 0; i < NUM_OF_SEGMENTS; i++) {
+    signature->segments = (uint64_t *)malloc(num_of_segments * 64);
+    for (int i = 0; i < num_of_segments; i++) {
         signature->segments[i] = 0;
     }
 }
@@ -93,6 +96,14 @@ void test(uint64_t test_addresses[], BloomFilterSignature *signature) {
 }
 
 int main(int argc, char *argv[]) {
+    if(argc !=2) {
+        return -1;
+    }
+
+    num_of_segments = atoi(argv[1]);
+
+    printf("Number of Segments: %d \n", num_of_segments);
+
     BloomFilterSignature signature;
 
     init_signature(&signature);
