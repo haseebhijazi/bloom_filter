@@ -1,4 +1,3 @@
-import m5
 from m5.objects import *
 
 system = System()
@@ -29,7 +28,9 @@ system.mem_ctrl.port = system.membus.mem_side_ports
 
 system.system_port = system.membus.cpu_side_ports
 
-# path depends on project setup
+num_of_segments = int(input("Enter number of segments: "))
+
+# Path is to be changed with respect to your own system 
 thispath = os.path.dirname(os.path.realpath(__file__))
 binary = os.path.join(
 	thispath,
@@ -40,7 +41,7 @@ binary = os.path.join(
 system.workload = SEWorkload.init_compatible(binary)
 
 process = Process()
-process.cmd = [binary]
+process.cmd = [binary, num_of_segments]
 system.cpu.workload = process
 system.cpu.createThreads()
 
